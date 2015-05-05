@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+if [ $# == 0 ]; then
+	echo "Python version to switch to must be specified."
+
+	exit 0
+fi
+
 if [ "$1" == "default" ]; then
 	rm -rf "/usr/local/p/versions/python/python"
 
@@ -59,4 +65,4 @@ echo "Cleaning up..."
 
 echo -e "\nNow using Python $1!"
 
-PATH=/usr/local/p/versions/python:$PATH
+export PATH=/usr/local/p/versions/python:$PATH
