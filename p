@@ -112,6 +112,20 @@ EOF
 }
 
 #
+# Output status.
+#
+
+display_status() {
+    get_current_version
+
+    log version $current
+    log bin $(display_bin_path_for_version)
+    log previous $(get_previous_version)
+    log latest $(is_latest_version)
+    log stable $(is_latest_stable_version)
+}
+
+#
 # Hide cursor.
 #
 
@@ -141,6 +155,17 @@ next_version_installed() {
 
 prev_version_installed() {
   list_versions_installed | grep $selected -B 1 | head -n 1
+}
+
+#
+# Output previous version.
+#
+get_previous_version() {
+    if [ ! -f $BASE_VERSIONS_DIR/.prev ]; then
+        echo "none"
+    else
+        echo $(cat $BASE_VERSIONS_DIR/.prev)
+    fi
 }
 
 #
@@ -472,6 +497,19 @@ display_latest_version() {
 }
 
 #
+# Determine if current version is the latest version.
+#
+
+is_latest_version() {
+    get_current_version
+    if [[ $current == $(display_latest_version) ]]; then
+        echo "yes"
+    else
+        echo "no"
+    fi
+}
+
+#
 # Display the latest stable release version.
 #
 
@@ -480,6 +518,19 @@ display_latest_stable_version() {
         | egrep -o '[0-9]+\.[0-9]*[02468]\.[0-9]+' \
         | sort -u -k 1,1n -k 2,2n -k 3,3n -t . \
         | tail -n1
+}
+
+#
+# Determine if current version is the latest stable version.
+#
+
+is_latest_stable_version() {
+    get_current_version
+    if [[ $current == $(display_latest_stable_version) ]]; then
+        echo "yes"
+    else
+        echo "no"
+    fi
 }
 
 #
@@ -524,6 +575,7 @@ else
     case $1 in
       -V|--version) display_p_version ;;
       -h|--help|help) display_help ;;
+      status) display_status ;;
       bin|which)
         case $2 in
             latest) display_bin_path_for_version $($0 ls latest); exit ;;
