@@ -524,7 +524,13 @@ else
     case $1 in
       -V|--version) display_p_version ;;
       -h|--help|help) display_help ;;
-      bin|which) display_bin_path_for_version $2; exit ;;
+      bin|which)
+        case $2 in
+            latest) display_bin_path_for_version $($0 ls latest); exit ;;
+            stable) display_bin_path_for_version $($0 ls stable); exit ;;
+            *) display_bin_path_for_version $2; exit ;;
+        esac
+      exit ;;
       as|use) shift; execute_with_version $@; exit ;;
       rm|-) shift; remove_versions $@; exit ;;
       ls|list)
