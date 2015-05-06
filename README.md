@@ -63,6 +63,11 @@ There are only two rules: avoid [code smells](http://blog.codinghorror.com/code-
 * **greater abstraction between Python 2.x.x and 3.x.x**
 
 ## FAQs
+* How does `p` differ from [`pyenv`](https://github.com/yyuu/pyenv)?
+  * `p` is designed for the average Python user. You can get up and running with the latest development build of Python with one simple command: `p latest`. No configuration is necessary; `p` manages everything for you.
+  * On the other hand, `pyenv` is for the more advanced user who is comfortable configuring their Python environment to all their needs. `p` provides the basics in one easy to use aesthetically-pleasing command.
+  * Additionally, `p` is easier to use. To switch your Python version, simply run `p` and you'll be presented with a list of installed Python versions to select from that you can scroll through with your arrow keys and select with the return key.
+  * `p` is great at dealing with any version of Python. If it's not installed, running `p <version>` will download the source, configure it for your system, and compile it, all in one simple command.
 * How does `p` work?
   * `p` stores each Python version installed in `/usr/local/p/versions/python`. When a Python version is activated, `p` creates a symbolic link to the Python binary located at `/usr/local/p/versions/python/python`. Since `p` prefixes the $PATH with `/usr/local/p/versions/python`, this version of `python` is found first; hence, it is used over the default version of Python installed on your system.
 * How do I revert back to my default Python version?
