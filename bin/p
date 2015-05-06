@@ -426,6 +426,9 @@ install() {
 
     log refresh \$PATH
     export PATH=/usr/local/p/versions/python:$PATH
+
+    source ~/.bashrc
+    source ~/.zshrc
     hash -r
 
     get_current_version
