@@ -18,8 +18,8 @@ if ! grep -q "export PATH=$BASE_VERSIONS_DIR/python:\$PATH" ~/.bashrc; then
     echo -e "\nexport PATH=$BASE_VERSIONS_DIR/python:\$PATH" >> ~/.bashrc
 fi
 
-if ! grep -q "export PATH=$BASE_VERSIONS_DIR/python:\$PATH" ~/.zshrc; then
-    echo -e "\nexport PATH=$BASE_VERSIONS_DIR/python:\$PATH" >> ~/.zshrc
+if ! grep -q "export PATH=\"$BASE_VERSIONS_DIR/python:\$PATH\"" ~/.zshrc; then
+    echo -e "\nexport PATH=\"$BASE_VERSIONS_DIR/python:\$PATH\"" >> ~/.zshrc
 fi
 
 #
@@ -426,6 +426,8 @@ install() {
 
     log refresh \$PATH
     export PATH=/usr/local/p/versions/python:$PATH
+    source ~/.bashrc
+    source ~/.zshrc
 
     get_current_version
     success "Now using Python $current!"
