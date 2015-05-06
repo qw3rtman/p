@@ -67,6 +67,8 @@ There are only two rules: avoid [code smells](http://blog.codinghorror.com/code-
   * Simply run `p default` and `p` will remove the symbolic link described above; therefore reverting back to your default Python version.
 * Does `p` download the source each time I activate or install a version?
   * Nope. `p` stores the source for each of the versions installed, allowing for quick activations between already-installed versions.
+* How do I get this working on Windows?
+  * Unfortunately, `p` is not supported on Windows at the time. If you know of a workaround, send in a pull request!
 
 ## Core Team
 ### Nimit Kalra
