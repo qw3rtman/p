@@ -92,9 +92,9 @@ display_help() {
 
     p                              Output versions installed
     p status                       Output current status
-    p <version>                    Switch to Python <version>
-      p latest                     Switch to the latest Python release
-      p stable                     Switch to the latest stable Python release
+    p <version>                    Activate to Python <version>
+      p latest                     Activate to the latest Python release
+      p stable                     Activate to the latest stable Python release
     p use <version> [args ...]     Execute Python <version> with [args ...]
     p bin <version>                Output bin path for <version>
     p rm <version ...>             Remove the given version(s)
