@@ -442,6 +442,12 @@ remove_versions() {
     test -z $1 && abort "version(s) required"
 
     for version in "$@"; do
+        if [[ "$version" = "latest" ]]; then
+            version=$(display_latest_version)
+        elif [[ "$version" = "stable" ]]; then
+            version=$(display_latest_stable_version)
+        fi
+
         rm -rf $BASE_VERSIONS_DIR/python/${version#v}
         log remove $version
     done
