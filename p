@@ -418,14 +418,22 @@ remove_versions() {
 
 display_bin_path_for_version() {
     get_current_version
-    local version=${1#v}
-    test -z $1 && local version=$current;
+
+    if [ ! -z $1 ]; then
+        local version=${1#v}
+    else
+        if [ ! -d $BASE_VERSIONS_DIR/python/$current ]; then
+            abort "Version required!"
+        else
+            local version=$current;
+        fi
+    fi
 
     local bin=$BASE_VERSIONS_DIR/python/$version/python.exe
     if test -f $bin; then
         printf "$bin \n"
     else
-        abort "Python $1 is not installed"
+        abort "Python $version is not installed"
     fi
 }
 
