@@ -47,7 +47,7 @@ $ chmod +x p
 $ mv p /usr/local/bin
 ```
 
-If you don't have `wget` on your system, you can download the `j` binary from the [releases page](https://github.com/qw3rtman/j/releases) and follow the above steps from the second one onward.
+If you don't have `wget` on your system, you can download the `p` binary from the [releases page](https://github.com/qw3rtman/p/releases) and follow the above steps from the second one onward.
 
 ## Updating
 Simply follow the above steps and swap out the old Bash script with the new one!
