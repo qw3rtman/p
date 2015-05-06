@@ -191,8 +191,8 @@ check_current_version() {
 versions_paths() {
   find $BASE_VERSIONS_DIR -maxdepth 2 -type d \
     | sed 's|'$BASE_VERSIONS_DIR'/||g' \
-    | egrep "/[0-9]+\.[0-9]+\.[0-9]+$" \
-    | sort -k 1,1n -k 2,2n -k 3,3n -t .
+    | egrep "[0-9]+\.[0-9]+\.[0-9]+([a|b]?)([0-9]?)+" \
+    | sort -k 1,1n -k 2,2n -k 3,3n -t . -k 4,4n -d -k 5,5n -r
 }
 
 #
@@ -428,7 +428,7 @@ display_bin_path_for_version() {
     get_current_version
     local version=${1#v}
     test -z $1 && local version=$current;
-    
+
     local bin=$BASE_VERSIONS_DIR/python/$version/python.exe
     if test -f $bin; then
         printf "$bin \n"
