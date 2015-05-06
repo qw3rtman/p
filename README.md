@@ -40,7 +40,7 @@ Options:
 ## Installation
 After downloading the Bash script, simply copy it over to your `$PATH` and `p` will take care of the rest.
 ```sh
-$ wget https://github.com/qw3rtman/p/releases/download/v0.1.0/j
+$ wget https://github.com/qw3rtman/p/releases/download/v0.1.0/p
 $ chmod +x p
 $ mv p /usr/local/bin
 ```
