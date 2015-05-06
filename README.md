@@ -61,6 +61,7 @@ There are only two rules: avoid [code smells](http://blog.codinghorror.com/code-
 
 ## TODO
 * **greater abstraction between Python 2.x.x and 3.x.x**
+* also manage pip
 
 ## FAQs
 * How does `p` differ from [`pyenv`](https://github.com/yyuu/pyenv)?
