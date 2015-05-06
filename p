@@ -593,7 +593,7 @@ else
             *) display_remote_versions; exit ;;
         esac
       exit ;;
-      prev) activate_previous; exit ;;
+      prev|previous) activate_previous; exit ;;
       default) activate_default; exit ;;
       latest) install $($0 ls latest); exit ;;
       stable) install $($0 ls stable); exit ;;
