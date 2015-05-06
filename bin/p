@@ -11,6 +11,18 @@ P_PREFIX=${P_PREFIX-/usr/local}
 BASE_VERSIONS_DIR=$P_PREFIX/p/versions
 
 #
+# Add to PATH.
+#
+
+if ! grep -q "export PATH=$BASE_VERSIONS_DIR/python:\$PATH" ~/.bashrc; then
+    echo -e "\nexport PATH=$BASE_VERSIONS_DIR/python:\$PATH" >> ~/.bashrc
+fi
+
+if ! grep -q "export PATH=$BASE_VERSIONS_DIR/python:\$PATH" ~/.zshrc; then
+    echo -e "\nexport PATH=$BASE_VERSIONS_DIR/python:\$PATH" >> ~/.zshrc
+fi
+
+#
 # Python source.
 #
 
