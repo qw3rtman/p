@@ -464,7 +464,7 @@ display_bin_path_for_version() {
 }
 
 #
-# Execute the given <version> of node with [args ...]
+# Execute the given <version> of Python with [args ...]
 #
 
 execute_with_version() {
