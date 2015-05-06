@@ -91,6 +91,7 @@ display_help() {
   Commands:
 
     p                              Output versions installed
+    p status                       Output current status
     p <version>                    Switch to Python <version>
       p latest                     Switch to the latest Python release
       p stable                     Switch to the latest stable Python release
