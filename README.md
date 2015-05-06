@@ -5,6 +5,8 @@
 
 `p` is **powerful** and **feature-packed**, yet **simple**; both in setup and use. There are no tricky settings, options, or crazy dependencies. `p` is just a helpful ~600 line Bash script that gets the job done.
 
+**`p` let's you quickly switch between Python versions whenever you need to, removing the barrier between Python 2.x.x and 3.x.x.**
+
 `p` was heavily inspired by [`n`, a version manager for Node.js](https://github.com/tj/n).
 
 `p` is also great for getting started using Python development versions. Use `p latest` to get up and running with the latest development version of Python!
