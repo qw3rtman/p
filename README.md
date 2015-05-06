@@ -7,6 +7,8 @@
 
 `p` was heavily inspired by [`n`, a version manager for Node.js](https://github.com/tj/n).
 
+`p` is also great for getting started using Python development versions. Use `p latest` to get up and running with the latest development version of Python!
+
 ## Getting Started
 After the [super painless drag-and-drop installation](#installation), you can [start using `p`](#usage) right away.
 
