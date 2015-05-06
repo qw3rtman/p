@@ -23,7 +23,7 @@ test -d $BASE_VERSIONS_DIR/python || mkdir -p $BASE_VERSIONS_DIR/python
 #
 
 log() {
-  printf "  \033[36m%10s\033[0m : \033[90m%s\033[0m\n" "$1" "$2"
+    printf "  \033[36m%10s\033[0m : \033[90m%s\033[0m\n" "$1" "$2"
 }
 
 #
@@ -31,7 +31,7 @@ log() {
 #
 
 abort() {
-  printf "\n  \033[31mError: $@\033[0m\n\n" && exit 1
+    printf "\n  \033[31mError: $@\033[0m\n\n" && exit 1
 }
 
 #
@@ -60,23 +60,23 @@ test -z "$GET" && abort "curl or wget required"
 #
 
 enter_fullscreen() {
-  tput smcup
-  stty -echo
+    tput smcup
+    stty -echo
 }
 
 leave_fullscreen() {
-  tput rmcup
-  stty echo
+    tput rmcup
+    stty echo
 }
 
 handle_sigint() {
-  leave_fullscreen
-  exit $?
+    leave_fullscreen
+    exit $?
 }
 
 handle_sigtstp() {
-  leave_fullscreen
-  kill -s SIGSTOP $$
+    leave_fullscreen
+    kill -s SIGSTOP $$
 }
 
 #
@@ -109,7 +109,7 @@ display_help() {
     -h, --help      Display help information
 
 EOF
-  exit 0
+    exit 0
 }
 
 #
@@ -131,7 +131,7 @@ display_status() {
 #
 
 hide_cursor() {
-  printf "\e[?25l"
+    printf "\e[?25l"
 }
 
 #
@@ -139,7 +139,7 @@ hide_cursor() {
 #
 
 show_cursor() {
-  printf "\e[?25h"
+    printf "\e[?25h"
 }
 
 #
@@ -147,7 +147,7 @@ show_cursor() {
 #
 
 next_version_installed() {
-  list_versions_installed | grep $selected -A 1 | tail -n 1
+    list_versions_installed | grep $selected -A 1 | tail -n 1
 }
 
 #
@@ -155,7 +155,7 @@ next_version_installed() {
 #
 
 prev_version_installed() {
-  list_versions_installed | grep $selected -B 1 | head -n 1
+    list_versions_installed | grep $selected -B 1 | head -n 1
 }
 
 #
@@ -174,7 +174,7 @@ get_previous_version() {
 #
 
 display_p_version() {
-  echo $VERSION && exit 0
+    echo $VERSION && exit 0
 }
 
 #
@@ -191,15 +191,15 @@ get_current_version() {
 #
 
 check_current_version() {
-  command -v python &> /dev/null
-  if test $? -eq 0; then
-    get_current_version
-	if diff &> /dev/null \
-	  $BASE_VERSIONS_DIR/python/$current/python.exe \
-	  $(which python) ; then
-	  active="python/$current"
-	fi
-  fi
+    command -v python &> /dev/null
+    if test $? -eq 0; then
+        get_current_version
+        if diff &> /dev/null \
+            $BASE_VERSIONS_DIR/python/$current/python.exe \
+            $(which python) ; then
+            active="python/$current"
+        fi
+    fi
 }
 
 #
@@ -207,10 +207,10 @@ check_current_version() {
 #
 
 versions_paths() {
-  find $BASE_VERSIONS_DIR -maxdepth 2 -type d \
-    | sed 's|'$BASE_VERSIONS_DIR'/||g' \
-    | egrep "[0-9]+\.[0-9]+\.[0-9]+([a|b]?)([0-9]?)+" \
-    | sort -k 1,1n -k 2,2n -k 3,3n -t . -k 4,4n -d -k 5,5n -r
+    find $BASE_VERSIONS_DIR -maxdepth 2 -type d \
+        | sed 's|'$BASE_VERSIONS_DIR'/||g' \
+        | egrep "[0-9]+\.[0-9]+\.[0-9]+([a|b]?)([0-9]?)+" \
+        | sort -k 1,1n -k 2,2n -k 3,3n -t . -k 4,4n -d -k 5,5n -r
 }
 
 #
@@ -218,17 +218,17 @@ versions_paths() {
 #
 
 display_versions_with_selected() {
-  selected=$1
-  echo
-  for version in $(versions_paths); do
-    version_minus_python=${version#*python\/}
-    if test "$version" = "$selected"; then
-      printf "  \033[36mο\033[0m $version_minus_python\033[0m\n"
-    else
-      printf "    \033[90m$version_minus_python\033[0m\n"
-    fi
-  done
-  echo
+    selected=$1
+    echo
+    for version in $(versions_paths); do
+        version_minus_python=${version#*python\/}
+        if test "$version" = "$selected"; then
+            printf "  \033[36mο\033[0m $version_minus_python\033[0m\n"
+        else
+            printf "    \033[90m$version_minus_python\033[0m\n"
+        fi
+    done
+    echo
 }
 
 #
@@ -236,9 +236,9 @@ display_versions_with_selected() {
 #
 
 list_versions_installed() {
-  for version in $(versions_paths); do
-    echo ${version}
-  done
+    for version in $(versions_paths); do
+        echo ${version}
+    done
 }
 
 #
@@ -246,31 +246,31 @@ list_versions_installed() {
 #
 
 display_versions() {
-  enter_fullscreen
-  check_current_version
-  display_versions_with_selected $active
+    enter_fullscreen
+    check_current_version
+    display_versions_with_selected $active
 
-  trap handle_sigint INT
-  trap handle_sigtstp SIGTSTP
+    trap handle_sigint INT
+    trap handle_sigtstp SIGTSTP
 
-  while true; do
-    read -n 3 c
-    case "$c" in
-      $UP)
-        clear
-        display_versions_with_selected $(prev_version_installed)
-        ;;
-      $DOWN)
-        clear
-        display_versions_with_selected $(next_version_installed)
-        ;;
-      *)
-        activate $selected
-        leave_fullscreen
-        exit
-        ;;
-    esac
-  done
+    while true; do
+        read -n 3 c
+        case "$c" in
+            $UP)
+            clear
+            display_versions_with_selected $(prev_version_installed)
+            ;;
+            $DOWN)
+            clear
+            display_versions_with_selected $(next_version_installed)
+            ;;
+            *)
+            activate $selected
+            leave_fullscreen
+            exit
+            ;;
+        esac
+    done
 }
 
 #
@@ -278,7 +278,7 @@ display_versions() {
 #
 
 erase_line() {
-  printf "\033[1A\033[2K"
+    printf "\033[1A\033[2K"
 }
 
 #
@@ -569,36 +569,36 @@ display_remote_versions() {
 #
 
 if test $# -eq 0; then
-  test -z "$(versions_paths)" && abort "no installed version"
-  display_versions
+    test -z "$(versions_paths)" && abort "no installed version"
+    display_versions
 else
-  while test $# -ne 0; do
-    case $1 in
-      -V|--version) display_p_version ;;
-      -h|--help|help) display_help ;;
-      status) display_status ;;
-      bin|which)
-        case $2 in
-            latest) display_bin_path_for_version $($0 ls latest); exit ;;
-            stable) display_bin_path_for_version $($0 ls stable); exit ;;
-            *) display_bin_path_for_version $2; exit ;;
+    while test $# -ne 0; do
+        case $1 in
+            -V|--version) display_p_version ;;
+            -h|--help|help) display_help ;;
+            status) display_status ;;
+            bin|which)
+            case $2 in
+                latest) display_bin_path_for_version $($0 ls latest); exit ;;
+                stable) display_bin_path_for_version $($0 ls stable); exit ;;
+                *) display_bin_path_for_version $2; exit ;;
+            esac
+            exit ;;
+            as|use) shift; execute_with_version $@; exit ;;
+            rm|-) shift; remove_versions $@; exit ;;
+            ls|list)
+            case $2 in
+                latest) display_latest_version; exit ;;
+                stable) display_latest_stable_version; exit ;;
+                *) display_remote_versions; exit ;;
+            esac
+            exit ;;
+            prev|previous) activate_previous; exit ;;
+            default) activate_default; exit ;;
+            latest) install $($0 ls latest); exit ;;
+            stable) install $($0 ls stable); exit ;;
+            *) install $1; exit ;;
         esac
-      exit ;;
-      as|use) shift; execute_with_version $@; exit ;;
-      rm|-) shift; remove_versions $@; exit ;;
-      ls|list)
-        case $2 in
-            latest) display_latest_version; exit ;;
-            stable) display_latest_stable_version; exit ;;
-            *) display_remote_versions; exit ;;
-        esac
-      exit ;;
-      prev|previous) activate_previous; exit ;;
-      default) activate_default; exit ;;
-      latest) install $($0 ls latest); exit ;;
-      stable) install $($0 ls stable); exit ;;
-      *) install $1; exit ;;
-    esac
-    shift
-  done
+        shift
+    done
 fi
