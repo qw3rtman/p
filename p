@@ -425,7 +425,7 @@ display_bin_path_for_version() {
     if test -f $bin; then
         printf "$bin \n"
     else
-        abort "$1 is not installed"
+        abort "Python $1 is not installed"
     fi
 }
 
@@ -443,7 +443,7 @@ execute_with_version() {
     if test -f $bin; then
         $bin "$@"
     else
-        abort "$version is not installed"
+        abort "Python $version is not installed"
     fi
 }
 
