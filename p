@@ -107,14 +107,6 @@ display_help() {
     -V, --version   Output current version of p
     -h, --help      Display help information
 
-  Aliases:
-
-    iojs    io
-    which   bin
-    use     as
-    list    ls
-    -       rm
-
 EOF
   exit 0
 }
