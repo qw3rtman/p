@@ -308,7 +308,7 @@ is_ok() {
 
 tarball_url() {
     version_directory="${version%a*}"
-    echo "${MIRROR}${version_directory%b*}/Python-${version}.tgz"
+    echo "${MIRROR[@]}" "${version_directory%b*}/Python-${version}.tgz"
 }
 
 #
