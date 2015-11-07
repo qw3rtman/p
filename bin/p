@@ -182,7 +182,7 @@ get_previous_version() {
 }
 
 #
-# Output n version.
+# Output p version.
 #
 
 display_p_version() {
