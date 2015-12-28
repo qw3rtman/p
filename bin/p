@@ -428,17 +428,13 @@ install() {
     activate python/"$version"
     log activate "$version"
 
-    log refresh \$PATH
-    export PATH=/usr/local/p/versions/python:$PATH
-
     source ~/.bashrc
     source ~/.zshrc
-    hash -r
+    export PATH=$BASE_VERSIONS_DIR/python:$PATH
+    log refresh \$PATH
 
     get_current_version
     success "Now using Python $current!"
-
-    # "Now using Python $(python -c 'import sys; print(".".join(map(str, sys.version_info[:])))')!"
 }
 
 #
