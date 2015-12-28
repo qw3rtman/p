@@ -49,6 +49,8 @@ $ mv p /usr/local/bin
 
 If you don't have `wget` on your system, you can download the `p` binary from the [releases page](https://github.com/qw3rtman/p/releases) and follow the above steps from the second one onward.
 
+So far, `p` has only been tested in Bash. If you can make `p` work on another shell, please send in a pull request!
+
 ## Updating
 Simply follow the above steps and swap out the old Bash script with the new one!
 
