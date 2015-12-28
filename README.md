@@ -49,6 +49,12 @@ $ mv p /usr/local/bin
 
 If you don't have `wget` on your system, you can download the `p` binary from the [releases page](https://github.com/qw3rtman/p/releases) and follow the above steps from the second one onward.
 
+Alternatively, you can install `p` via `npm`:
+
+```shell
+npm install -g pyvm
+```
+
 So far, `p` has only been tested in Bash. If you can make `p` work on another shell, please send in a pull request!
 
 ## Updating
