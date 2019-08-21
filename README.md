@@ -90,10 +90,10 @@ There are only two rules: avoid [code smells](http://blog.codinghorror.com/code-
 
 ## Core Team
 ### Nimit Kalra
-* <me@nimit.io>
+* <me@nimit.io> / <nimit@utexas.edu>
 * <http://nimit.io>
 * <https://github.com/qw3rtman>
-* <https://twitter.com/qw3rtman>
+* <https://twitter.com/nimkalra>
 
 ## License
 
